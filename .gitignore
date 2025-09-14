@@ -1,0 +1,45 @@
+# Sistema Paróquia Santa Rita - .gitignore
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos de IDE/Editor
+.vscode/
+.idea/
+*.iml
+
+# Dependências e pacotes externos
+/vendor/
+/node_modules/
+
+# Arquivos temporários e cache
+*.log
+*.cache
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# Sessões e uploads
+/public/uploads/
+/public/tmp/
+/app/sessions/
+
+# Configurações sensíveis
+/app/config/db.php
+.env
+
+# Arquivos de build e compilação (caso no futuro use npm/vite)
+/public/assets/build/
+
+# Banco de dados locais
+*.sql
+*.sqlite
+
+# Arquivos de backup
+*~
+*.old
+*.orig
+*.save
