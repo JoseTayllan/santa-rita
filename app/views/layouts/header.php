@@ -25,9 +25,18 @@
           <li class="nav-item">
             <a class="nav-link" href="index.php">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.php?r=eventos-publicos">Eventos</a>
-          </li>
+
+          <!-- Eventos: muda dependendo se o usuário está logado -->
+          <?php if (!empty($_SESSION['usuario']) && in_array($_SESSION['usuario']['role'], ['Administrador','Padre','DevAdmin','Coordenador'])): ?>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?r=eventos">Eventos</a>
+            </li>
+          <?php else: ?>
+            <li class="nav-item">
+              <a class="nav-link" href="index.php?r=eventos-publicos">Eventos</a>
+            </li>
+          <?php endif; ?>
+
           <li class="nav-item">
             <a class="nav-link" href="index.php?r=contato">Contato</a>
           </li>

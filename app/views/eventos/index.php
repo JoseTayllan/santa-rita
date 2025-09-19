@@ -24,29 +24,37 @@
             <th>Data</th>
             <th>Local</th>
             <th>Autor</th>
-            <th>Ações</th>
+            <th class="text-center">Ações</th>
           </tr>
         </thead>
         <tbody>
-          <?php foreach ($eventos as $evento): ?>
+          <?php if (!empty($eventos)): ?>
+            <?php foreach ($eventos as $evento): ?>
+              <tr>
+                <td><?= htmlspecialchars($evento['titulo']) ?></td>
+                <td class="text-truncate" style="max-width:220px;">
+                  <?= htmlspecialchars($evento['descricao']) ?>
+                </td>
+                <td><?= date('d/m/Y H:i', strtotime($evento['data_inicio'])) ?></td>
+                <td><?= htmlspecialchars($evento['local']) ?></td>
+                <td><?= htmlspecialchars($evento['autor']) ?></td>
+                <td class="text-center">
+                  <a href="index.php?r=eventos/edit&id=<?= $evento['id'] ?>" class="btn btn-sm btn-warning">
+                    <i class="fas fa-edit"></i>
+                  </a>
+                  <a href="index.php?r=eventos/delete&id=<?= $evento['id'] ?>" 
+                     class="btn btn-sm btn-danger"
+                     onclick="return confirm('Tem certeza que deseja excluir este evento?')">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+          <?php else: ?>
             <tr>
-              <td><?= htmlspecialchars($evento['titulo']) ?></td>
-              <td class="text-truncate" style="max-width:200px;"><?= htmlspecialchars($evento['descricao']) ?></td>
-              <td><?= date('d/m/Y H:i', strtotime($evento['data_inicio'])) ?></td>
-              <td><?= htmlspecialchars($evento['local']) ?></td>
-              <td><?= htmlspecialchars($evento['autor']) ?></td>
-              <td>
-                <a href="index.php?r=eventos/edit&id=<?= $evento['id'] ?>" class="btn btn-sm btn-warning">
-                  <i class="fas fa-edit"></i>
-                </a>
-                <a href="index.php?r=eventos/delete&id=<?= $evento['id'] ?>" 
-                   class="btn btn-sm btn-danger"
-                   onclick="return confirm('Excluir este evento?')">
-                  <i class="fas fa-trash"></i>
-                </a>
-              </td>
+              <td colspan="6" class="text-center text-muted">Nenhum evento cadastrado.</td>
             </tr>
-          <?php endforeach; ?>
+          <?php endif; ?>
         </tbody>
       </table>
     </div>

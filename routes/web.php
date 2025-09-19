@@ -3,7 +3,6 @@ return [
     '/' => 'HomeController@index',
     '/noticias' => 'NoticiaController@index',
     '/avisos' => 'AvisoController@index',
-    '/eventos' => 'EventoPublicController@index',
 
     // Auth
     '/login' => 'AuthController@login',
@@ -17,6 +16,7 @@ return [
     '/devdashboard' => 'DevDashboardController@index',
 
     // Admin Eventos
+    '/eventos' => 'EventoController@index',
     '/eventos/create' => 'EventoController@create',
     '/eventos/store' => 'EventoController@store',
     '/eventos/edit' => 'EventoController@edit',
@@ -41,8 +41,10 @@ return [
     "/relatorios" => "RelatorioController@index",
     '/seguranca-backup' => 'SegurancaBackupController@index',
 
+    // Eventos Públicos
     "/eventos-publicos" => "EventoPublicController@index",
     "/eventos-publicos/show" => "EventoPublicController@show",
 
+    // Contato
     '/contato' => 'ContatoController@index',
 ];
