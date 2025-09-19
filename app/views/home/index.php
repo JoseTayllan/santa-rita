@@ -1,3 +1,4 @@
+
 <?php $title = "Início - Paróquia Santa Rita"; ?>
 <?php include __DIR__ . '/../layouts/header.php'; ?>
 
@@ -31,7 +32,7 @@
       <?php endif; ?>
     </div>
   </div>
-</div> <!-- ✅ fecha row e col do Hero -->
+</div>
 
 <!-- Mensagem flash -->
 <?php if (!empty($_SESSION['flash'])): ?>
@@ -107,5 +108,27 @@
     <?php endif; ?>
   </div>
 </div>
+  <!-- Botão para ver todos os eventos -->
+  <div class="text-center mt-4">
+    <a href="index.php?r=/eventos-publicos" class="btn btn-outline-success btn-lg px-5">
+      <i class="fas fa-calendar"></i> Ver Todos os Eventos
+    </a>
+  </div>
+
+<!-- 📩 CTA Fale Conosco -->
+<div class="text-center mt-5">
+  <div class="card shadow-sm border-0">
+    <div class="card-body">
+      <h4 class="card-title mb-3"><i class="fas fa-envelope"></i> Fale Conosco</h4>
+      <p class="card-text text-muted">Precisa de mais informações? Entre em contato com a secretaria paroquial.</p>
+      <a href="index.php?r=contato" class="btn btn-outline-primary btn-lg px-5">
+        📩 Fale Conosco
+      </a>
+    </div>
+  </div>
+</div>
+
+</div>
 
 <?php include __DIR__ . '/../layouts/footer.php'; ?>
+

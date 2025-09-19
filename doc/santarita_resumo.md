@@ -61,7 +61,7 @@ Este documento resume o que já foi implementado e o que ainda está pendente no
 ### Painel Administrativo
 - Completar CRUD de **Usuários** (DevAdmin):
   - Criar, editar e excluir usuários.
-  - Vincular papéis (roles) de forma dinâmica e validada.
+  - Vincular papéis (roles) de forma dinâmica e validada.p
 - Módulo de **Relatórios** (estatísticas de avisos, eventos e acessos).
 - Módulo de **Segurança e Backup** (somente planejamento no momento).
 

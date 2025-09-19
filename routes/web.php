@@ -37,4 +37,12 @@ return [
     '/usuarios/edit' => 'UsuarioController@edit',
     '/usuarios/update' => 'UsuarioController@update',
     '/usuarios/delete' => 'UsuarioController@delete',
+
+    "/relatorios" => "RelatorioController@index",
+    '/seguranca-backup' => 'SegurancaBackupController@index',
+
+    "/eventos-publicos" => "EventoPublicController@index",
+    "/eventos-publicos/show" => "EventoPublicController@show",
+
+    '/contato' => 'ContatoController@index',
 ];

@@ -23,8 +23,19 @@ class UsuarioController {
 
     public function store() {
         verificarPermissao(['DevAdmin']);
-        $this->usuario->criar($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['role_id']);
-        header("Location: index.php?r=usuarios");
+        try {
+            $this->usuario->criar($_POST['nome'], $_POST['email'], $_POST['senha'], $_POST['role_id']);
+            $_SESSION['flash'] = ["type" => "success", "msg" => "Usuário criado com sucesso!"];
+            header("Location: index.php?r=usuarios");
+            exit;
+        } catch (PDOException $e) {
+            if ($e->getCode() == 23000) { // erro de email duplicado
+                $_SESSION['flash'] = ["type" => "danger", "msg" => "Já existe um usuário com este e-mail!"];
+                header("Location: index.php?r=usuarios/create");
+                exit;
+            }
+            throw $e;
+        }
     }
 
     public function edit() {
@@ -37,13 +48,37 @@ class UsuarioController {
     public function update() {
         verificarPermissao(['DevAdmin']);
         $senha = !empty($_POST['senha']) ? $_POST['senha'] : null;
-        $this->usuario->atualizar($_POST['id'], $_POST['nome'], $_POST['email'], $_POST['role_id'], $senha);
-        header("Location: index.php?r=usuarios");
+
+        try {
+            $this->usuario->atualizar($_POST['id'], $_POST['nome'], $_POST['email'], $_POST['role_id'], $senha);
+            $_SESSION['flash'] = ["type" => "success", "msg" => "Usuário atualizado com sucesso!"];
+            header("Location: index.php?r=usuarios");
+            exit;
+        } catch (PDOException $e) {
+            if ($e->getCode() == 23000) { // email duplicado
+                $_SESSION['flash'] = ["type" => "danger", "msg" => "Este e-mail já está em uso por outro usuário!"];
+                header("Location: index.php?r=usuarios/edit&id=" . $_POST['id']);
+                exit;
+            }
+            throw $e;
+        }
     }
 
     public function delete() {
         verificarPermissao(['DevAdmin']);
-        $this->usuario->excluir($_GET['id']);
+        $id = $_GET['id'];
+
+        // Protege o DevAdmin master (id=1)
+        if ($id == 1) {
+            $_SESSION['flash'] = ["type" => "danger", "msg" => "Não é permitido excluir o DevAdmin principal!"];
+            header("Location: index.php?r=usuarios");
+            exit;
+        }
+
+        $this->usuario->excluir($id);
+        $_SESSION['flash'] = ["type" => "success", "msg" => "Usuário excluído com sucesso!"];
         header("Location: index.php?r=usuarios");
+        exit;
     }
+
 }

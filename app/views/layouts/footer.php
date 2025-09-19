@@ -1,7 +1,7 @@
 </div> <!-- fecha container-fluid -->
 
 <!-- Rodapé -->
-<footer class="bg-white text-center py-3 shadow-sm mt-5">
+<footer class="bg-white text-center py-3 shadow-sm mt-auto">
   <small class="text-muted">
     &copy; <?= date('Y') ?> Paróquia Santa Rita - Todos os direitos reservados
   </small>

@@ -3,9 +3,14 @@
 
 <div class="d-flex justify-content-between align-items-center mb-4">
   <h1 class="h3 text-gray-800">📅 Gerenciar Eventos</h1>
-  <a href="index.php?r=eventos/create" class="btn btn-success">
-    <i class="fas fa-plus"></i> Novo Evento
-  </a>
+  <div>
+    <a href="index.php?r=dashboard" class="btn btn-outline-primary btn-sm">
+      <i class="fas fa-home"></i> Dashboard
+    </a>
+    <a href="index.php?r=eventos/create" class="btn btn-success">
+      <i class="fas fa-plus"></i> Novo Evento
+    </a>
+  </div>
 </div>
 
 <div class="card shadow-sm">
@@ -34,7 +39,9 @@
                 <a href="index.php?r=eventos/edit&id=<?= $evento['id'] ?>" class="btn btn-sm btn-warning">
                   <i class="fas fa-edit"></i>
                 </a>
-                <a href="index.php?r=eventos/delete&id=<?= $evento['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Excluir este evento?')">
+                <a href="index.php?r=eventos/delete&id=<?= $evento['id'] ?>" 
+                   class="btn btn-sm btn-danger"
+                   onclick="return confirm('Excluir este evento?')">
                   <i class="fas fa-trash"></i>
                 </a>
               </td>
